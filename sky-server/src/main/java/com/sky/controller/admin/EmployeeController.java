@@ -100,4 +100,18 @@ public class EmployeeController {
         return Result.success(pageResult);
     }
 
+
+    @PostMapping("/status/{status}")
+    @ApiOperation(value = "修改员工账号状态")
+    public Result updateStatus(@PathVariable int status,Long id){
+        log.info("启用禁用员工账号：{}{}",status,id);
+        employeeService.updateStatus(status,id);
+        return Result.success();
+    }
+
+
+    public Result<EmployeeDTO> employeeUpdate(){
+
+    }
+
 }

@@ -71,7 +71,6 @@ public class EmployeeServiceImpl implements EmployeeService {
      * 新增员工信息
      * @param employeeDTO
      */
-    @Override
     public void save(EmployeeDTO employeeDTO){
         Employee employee = new Employee();
 //        Spring框架提供的Bean对象属性拷贝
@@ -95,13 +94,25 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param employeePageQueryDTO
      * @return
      */
-    @Override
     public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
 //        开始分页查询
         PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
         Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
 //        构造PageResult对象，返回查询结果
         return new PageResult(page.getTotal(),page.getResult());
+    }
+
+
+    /**
+     * 启用禁用员工账号
+     * @param status
+     * @param id
+     */
+    public void updateStatus(int status, Long id) {
+        Employee employee = Employee.builder()
+                .status(status)
+                .id(id).build();
+        employeeMapper.update(employee);
     }
 
 
