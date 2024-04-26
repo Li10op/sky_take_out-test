@@ -110,8 +110,5 @@ public class EmployeeController {
     }
 
 
-    public Result<EmployeeDTO> employeeUpdate(){
-
-    }
 
 }
