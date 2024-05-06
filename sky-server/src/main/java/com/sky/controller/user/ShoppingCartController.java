@@ -53,8 +53,31 @@ public class ShoppingCartController {
      */
     @DeleteMapping("/clean")
     @ApiOperation("清空购物车")
-    public void clean(){
+    public Result clean(){
         Long id = BaseContext.getCurrentId();
         shoppingCartService.clean(id);
+        return Result.success();
+    }
+
+    /**
+     * 根据菜品或套餐删除购物车数据
+     * @param shoppingCartDTO
+     */
+    @PostMapping("/sub")
+    public Result deleteByDishOrSetmeal(@RequestBody ShoppingCartDTO shoppingCartDTO){
+
+//        查询菜品数量
+        ShoppingCart shoppingCart = shoppingCartService.selectDishOrSetmeal(shoppingCartDTO);
+        int  number = shoppingCart.getNumber();
+        Long id = shoppingCart.getId();
+        if(number > 1){
+            shoppingCart.setNumber(number-1);
+            shoppingCartService.update(shoppingCart);
+        }
+        else {
+            shoppingCartService.deleteById(id);
+        }
+        return Result.success();
+
     }
 }

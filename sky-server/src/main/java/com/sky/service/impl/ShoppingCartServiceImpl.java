@@ -95,4 +95,31 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public void clean(Long id) {
         shoppingCartMapper.deleteByUserId(id);
     }
+
+    /**
+     * 查询购物车菜品信息
+     * @param shoppingCartDTO
+     * @return
+     */
+    public ShoppingCart selectDishOrSetmeal(ShoppingCartDTO shoppingCartDTO) {
+        ShoppingCart shoppingCart = shoppingCartMapper.selectById(shoppingCartDTO);
+        return shoppingCart;
+    }
+
+    /**
+     * 更新购物车数据
+     * @param shoppingCart
+     */
+    public void update(ShoppingCart shoppingCart) {
+        shoppingCartMapper.updateNumberById(shoppingCart);
+    }
+
+    /**
+     * 删除购物车商品数据
+     * @param id
+     */
+    public void deleteById(Long id) {
+        shoppingCartMapper.deleteById(id);
+
+    }
 }
