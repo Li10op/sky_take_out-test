@@ -6,8 +6,19 @@ sky:
     database: sky_take_out
     username: sky_take_out
     password: 20021212
+
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
     access-key-id: LTAI5tPeFLzsPPT8gG3LPW64
     access-key-secret: U6k1brOZ8gaOIXv3nXbulGTUzy6Pd7
     bucket-name: sky-itcast
+
+  redis:
+    host: 172.26.127.150
+    port: 6379
+    database: 0
+    password: 20021212
+
+  wechat:
+    appid: wxdd4b31961fa63e95
+    secret: b341cd060878167e4ce2028f4543714b
