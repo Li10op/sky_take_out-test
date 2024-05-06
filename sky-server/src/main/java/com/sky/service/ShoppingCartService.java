@@ -13,4 +13,9 @@ public interface ShoppingCartService {
      * @return
      */
     List<ShoppingCart> showShoppingCart();
+
+    /**
+     * 根据用户id清空购物车
+     */
+    void clean(Long id);
 }
